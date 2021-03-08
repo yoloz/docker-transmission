@@ -1,16 +1,24 @@
-# Use
+# Build
 
-build `docker build github.com/yoloz/docker-transmission-daemon/alpine` or pull `docker pull 796c7a/transmission-daemon`
+```
+git clone  https://github.com/yoloz/docker-transmission-daemon.git
+cd docker-transmission-daemon
+docker build -t youl/transmission-daemon .
+```
+
+# Pull 
+
+`docker pull youl/transmission-daemon`
 
 # Start a container
 
 ```bash
-sudo docker run -d --name="transmission" \
+docker run -d --name="transmission" \
   -e USERNAME="test" \
   -e PASSWORD="test" \
   -p 9091:9091 \
   -p 51413:51413 \
   -p 51413:51413/udp \
-  -v ${USER}/downloads:/root/Downloads \
-  796c7a/transmission-daemon
+  -v /home/${USER}/downloads:/root/Downloads \
+  youl/transmission-daemon
 ```
